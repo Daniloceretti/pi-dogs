@@ -28,20 +28,22 @@ catch (error){
 
 
 router.get("/:id", async (req, res) => {
-    try{
-        const {id} = req.params;
+try{  
+    const {id} = req.params
     const totalDogs = await getAllDogs()
-    if (id){
-        let dogId = await totalDogs.filter( el => el.id == id);
+    if(id){
+        let dogId = await totalDogs.filter(
+            dog => id.length > 8 ? dog.id === id : 
+            (dog.id) === parseInt(id))
         dogId.length?
-        res.status(200).json(dogId) :
-        res.status(404).send ("There is not dog with this ID")
+        res.status(200).json(dogId):
+        res.status(404).send('Dog not found')
     }
-}
-catch (error){
-    console.log(error)
-}
-});
+    }
+    catch(error){
+        next(error)
+    }
+})
 
 router.post ("/", async (req, res, next) => {
     let {name, life_span, minweight, maxweight, minheight, maxheight, image, temperament } = req.body;

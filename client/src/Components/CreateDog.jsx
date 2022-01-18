@@ -41,8 +41,8 @@ function validate(input) {
     } else if (Number(input.maxheight) <= 0 || Number(input.maxheight) < Number(input.minheight) || Number(input.maxheight) > 100) {
         errors.maxheight = 'Write a number beetwen 0- 100'
     }
-    if (!input.temperament){
-        errors.temperament=" falta temperamnets"
+    if (!input.temperaments){
+        errors.temperaments=" falta temperamnets"
     }
     return errors
 }
@@ -260,11 +260,11 @@ export default function PostDog() {
                     </div>
                     <br />
                     <label className={s.conteinTemp} >Temperaments:</label>
-                    <select /* multiple={true} */ /* value={input.temperament} */ onChange={(e) => handleSelect(e)}>
+                    <select  onChange={(e) => handleSelect(e)}>
                         {temperaments?.map((el,i) => (<option value={el.name} key={i}
                         >{el.name}</option>))}
-                         {errors.temperament && (
-                            <p className = 'error'>{errors.temperament}</p>
+                         {errors.temperaments && (
+                            <p className = 'error'>{errors.temperaments}</p>
                         )}  
                     </select>
                     

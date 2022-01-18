@@ -1,51 +1,51 @@
 .pagination {
-    display:inline-flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    background-color:black;
-  }
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul.pagination li {
-    display: inline-block;
-    width: 30px;
-    border: 1px solid #e2e2e2;
-    display: flex;
-    justify-content: center;
-    font-size: 25px;
-  }
-  
-  ul.pagination li button {
-    
-    color: #135186;
-    font-size: 20px;
-  }
-  
-  ul.pagination li.active button{
-    color: white;
-  }
-  ul.pagination li.active {
-    background-color: #337ab7;
-  }
-  
-  ul.pagination li  button:hover,
-  ul.pagination li  button.active {
-    color: blue;
-  }
-  
-  .page-selection {
-    width: 48px;
-    height: 30px;
-    color: #337ab7;
-  }
-  
-  .pagination-wrapper {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    margin-top: 10px;
-  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul.pagination li {
+  display: inline-block;
+  width: 30px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+ul.pagination li div {
+  text-decoration-color: tomato;
+  color: #135186;
+  font-size: 20px;
+}
+
+ul.pagination li.active div {
+  color: white;
+}
+ul.pagination li.active {
+  background-color: #337ab7;
+}
+
+ul.pagination li div:hover,
+ul.pagination li div.active {
+  color: blue;
+}
+
+.page-selection {
+  width: 48px;
+  height: 30px;
+  color: #337ab7;
+}
+
+.pagination-wrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}

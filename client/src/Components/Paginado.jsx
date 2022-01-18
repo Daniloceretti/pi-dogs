@@ -12,9 +12,9 @@ export default function Paginado ({dogsPerPage, allDogs, paginado }) {
             <ul className = {Styles.pagination}>
                 {pageNumbers?.map(number => (
                     <li key={number}>
-                        <button /* href="http://localhost:3000/home" */ onClick = {() => paginado(number)}>
+                        <div  onClick = {() => paginado(number)}>
                             {number}
-                        </button>
+                        </div>
                     </li>
                 ))} </ul>
         </nav>

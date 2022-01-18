@@ -19,13 +19,13 @@ function Home() {
 
     //paginado
     const [currentPage, setCurrentPage] = useState(1)
-    const [dogsPerPage, setDogsPerPage] = useState(8)
-    const numbersOfLastDog = currentPage * dogsPerPage
-    const numberOfFirtsDog = numbersOfLastDog - dogsPerPage
+    const dogsPerPage = 8
+    const numbersOfLastDog = currentPage * dogsPerPage//1  * 8 = 8
+    const numberOfFirtsDog = numbersOfLastDog - dogsPerPage// 8 - 8 = 0
     const currentDog = allDogs.slice(numberOfFirtsDog, numbersOfLastDog)
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
-        setDogsPerPage(dogsPerPage)
+      
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ function Home() {
         dispatch(getTemperaments())
     }, [dispatch])
 
-    //filtro por temperaments
+    
     const temperaments = useSelector((state) => state.temperaments)
     const [temperament, setTemperament] = useState("All")
 
@@ -57,11 +57,8 @@ function Home() {
     }
 
 
-
-
-    //filtro por razas
-    //eslint-disable-next-line
-    const [breeds, setBreeds] = useState('all')
+    
+    const [, setBreeds] = useState('all')
     function handleFilterCreated(e) {
         e.preventDefault()
         dispatch(filterCreated(e.target.value))
@@ -70,9 +67,9 @@ function Home() {
 
     }
 
-    //filtrado por abecedario
-    //eslint-disable-next-line
-    const [orden, setOrden] = useState('')
+
+   
+    const [, setOrden] = useState('')
     function handleSort(e) {
         e.preventDefault()
         dispatch(orderByName(e.target.value))
@@ -81,9 +78,9 @@ function Home() {
         setOrdenPorPeso("")
     }
 
-    ///filtrado por peso
-    //eslint-disable-next-line
-    const [ordenPorPeso, setOrdenPorPeso] = useState('')
+
+    
+    const [, setOrdenPorPeso] = useState('')
     function handleSortWeight(e) {
         e.preventDefault()
         dispatch(orderByWeight(e.target.value))
@@ -147,14 +144,15 @@ function Home() {
                 <br/>
                 {currentDog.length === 0 ? <img  alt= {"Loading"} src={carga}/>: 
 
-                currentDog?.map(el => {
+
+                currentDog?.map((el,index) => {
                     return (
-                        <div key={el.id}>
-                            <Link style={{ textDecoration: 'none' }} to={`/dogs/${el.id}`}>
+                        <div key={index}>
+                           
                                 <Card
+                                    id={el.id}
                                     name={el.name}
                                     image={el.image ? el.image : el.image}
-                                    key={el.id}
                                     maxweight={el.maxweight}
                                     minweight={el.minweight}
                                     minheight={el.minheight}
@@ -162,16 +160,20 @@ function Home() {
                                     temperament={el.temperament}
                                     temperaments={el.temperaments?.map((t) => t.name).join(', ')}
                                 />
-                            </Link>
+                            
                             
                         </div>
                         
                     )
                 })
+                
+                
 
                 }
                 
                     <div className={s.pag} >
+                    {/*     <button onClick={() => paginado(currentPage === 23 ? currentPage : currentPage +1)}>Next</button>
+                        <button onClick={() => paginado(currentPage-1)}>Prev</button> */}
                     <Paginado
                         dogsPerPage={dogsPerPage}
                         allDogs={allDogs.length}
